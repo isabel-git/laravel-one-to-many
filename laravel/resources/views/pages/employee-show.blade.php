@@ -14,12 +14,14 @@
 
         @foreach ($employee -> tasks as $task)
 
-            <li>
-                TITLE: {{ $task -> title }} <br>
-                DESCRIPTION: {{ $task -> description}} <br>
-                PRIORITY: {{ $task -> priority }} <br>
-            </li>
-
+            @php
+                dd($task -> employee_id);
+            @endphp
+            
+            <li>TITLE: {{ $task -> title }}</li>
+            <li>DESCRIPTION: {{ $task -> description}}</li>
+            <li>PRIORITY: {{ $task -> priority }}</li>
+   
         @endforeach
 
 

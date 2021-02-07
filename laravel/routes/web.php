@@ -13,5 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@employeeIndex') -> name('employee-index');
+// EMPLOYEES
+Route::get('/employee', 'MainController@employeeIndex') -> name('employee-index');
 Route::get('/employee/{id}', 'MainController@employeeShow') -> name('employee-show');
+
+// TASKS
+Route::get('/task', 'MainController@taskIndex') -> name('task-index');
+Route::get('/task/{id}', 'MainController@taskShow') -> name('task-show');
