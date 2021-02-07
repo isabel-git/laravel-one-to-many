@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             EmployeeSeeder::class, //va prima la tab senza la foreign key
             TaskSeeder::class,
+            TypologySeeder::class, //va messo dove voglio
         ]);
     }
 }

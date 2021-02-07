@@ -14,9 +14,9 @@
 
         @foreach ($employee -> tasks as $task)
 
-            @php
+            {{-- @php
                 dd($task -> employee_id);
-            @endphp
+            @endphp --}}
             
             <li>TITLE: {{ $task -> title }}</li>
             <li>DESCRIPTION: {{ $task -> description}}</li>

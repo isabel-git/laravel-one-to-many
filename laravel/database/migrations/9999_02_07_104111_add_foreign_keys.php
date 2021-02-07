@@ -23,6 +23,15 @@ class AddForeignKeys extends Migration
                     -> references('id') // nome della chiave primaria della tab employee
                     -> on('employees'); //nome della tab referenziata
         });
+
+        Schema::table('task_typology', function (Blueprint $table) { //DA TASK_TYPOLOGY
+            $table  -> foreign('task_id', 'tt-task')  // A TASK
+                    -> references('id') 
+                    -> on('tasks'); 
+            $table  -> foreign('typology_id', 'tt-typology') // A TYPOLOGY
+                    -> references('id') 
+                    -> on('typologies'); 
+        });
     }
 
     /**
@@ -32,10 +41,21 @@ class AddForeignKeys extends Migration
      */
     public function down()
     {
+        Schema::table('task_typology', function (Blueprint $table) {
+
+            //IN ORDINE SPECULARE
+            $table  -> dropForeign('tt-typology'); // TYPOLOGY 
+
+            $table  -> dropForeign('tt-task'); // TASK
+
+        });
 
         Schema::table('tasks', function (Blueprint $table) { 
 
             $table -> dropForeign('task-employee');
         });
+
     }
+
+    // CANCELLA IL DB E RI-CREALO
 }
