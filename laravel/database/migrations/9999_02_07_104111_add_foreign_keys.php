@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddForeignKeys extends Migration
+{
+    //per ogni task abbiamo UNO ED UN SOLO EMPLOYEE
+    //per ogni employee abbiamo MOLTI TASKS (task ha la foreign key)
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+
+        Schema::table('tasks', function (Blueprint $table) {
+
+            $table  -> foreign('employee_id', 'task-employee')
+                    -> references('id') // nome della chiave primaria della tab employee
+                    -> on('employees'); //nome della tab referenziata
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+
+        Schema::table('tasks', function (Blueprint $table) { 
+
+            $table -> dropForeign('task-employee');
+        });
+    }
+}

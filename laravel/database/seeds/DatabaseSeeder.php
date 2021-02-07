@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        $this->call([
+            EmployeeSeeder::class, //va prima la tab senza la foreign key
+            TaskSeeder::class,
+        ]);
     }
 }

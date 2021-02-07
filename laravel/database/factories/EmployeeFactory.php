@@ -8,8 +8,8 @@ use Faker\Generator as Faker;
 $factory->define(Employee::class, function (Faker $faker) {
     return [
 
-        'name' => $faker -> firstName(),
-        'lastname' => $faker -> lastName(),
-        'date_of_birth' => $faker -> date($format = 'Y-m-d', $max = 'now'), //-18 years
+        'name' => $faker -> firstName,
+        'lastname' => $faker -> lastName,
+        'date_of_birth' => $faker -> date(), //-18 years
     ];
 });
