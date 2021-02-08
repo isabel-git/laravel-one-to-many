@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Typology;
 use App\Employee;
 use App\Task;
 
@@ -23,11 +24,22 @@ class MainController extends Controller
     // TASKS
     public function taskIndex() {
 
-        $tasks = task::all();
+        $tasks = Task::all();
         return view('pages.task-index', compact('tasks'));
     }
     public function taskShow($id) {
-        $task = task::findOrFail($id);
+        $task = Task::findOrFail($id);
         return view('pages.task-show', compact('task'));
+    }
+
+    // TYPOLOGIES
+    public function typologyIndex() {
+
+        $typologies = Typology::all();
+        return view('pages.typology-index', compact('typologies'));
+    }
+    public function typologyShow($id) {
+        $typology = Typology::findOrFail($id);
+        return view('pages.typology-show', compact('typology'));
     }
 }

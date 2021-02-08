@@ -20,3 +20,7 @@ Route::get('/employee/{id}', 'MainController@employeeShow') -> name('employee-sh
 // TASKS
 Route::get('/task', 'MainController@taskIndex') -> name('task-index');
 Route::get('/task/{id}', 'MainController@taskShow') -> name('task-show');
+
+// TYPOLOGIES
+Route::get('/typology', 'MainController@typologyIndex') -> name('typology-index');
+Route::get('/typology/{id}', 'MainController@typologyShow') -> name('typology-show');
