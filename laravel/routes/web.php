@@ -19,7 +19,15 @@ Route::get('/employee/{id}', 'MainController@employeeShow') -> name('employee-sh
 
 // TASKS
 Route::get('/task', 'MainController@taskIndex') -> name('task-index');
+
+Route::get('/task/create', 'MainController@taskCreate') -> name('task-create');
+Route::post('/task/store', 'MainController@taskStore') -> name('task-store');
+
+Route::get('/task/edit/{id}', 'MainController@taskEdit') -> name('task-edit');
+Route::post('/task/update/{id}', 'MainController@update') -> name('task-update');
+
 Route::get('/task/{id}', 'MainController@taskShow') -> name('task-show');
+
 
 // TYPOLOGIES
 Route::get('/typology', 'MainController@typologyIndex') -> name('typology-index');
