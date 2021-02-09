@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
+use App\Task;
 use App\Typology;
 use App\Employee;
-use App\Task;
 
-use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
@@ -21,6 +22,10 @@ class MainController extends Controller
         return view('pages.employee-show', compact('employee'));
     }
 
+
+
+
+
     // TASKS
     public function taskIndex() {
 
@@ -28,6 +33,7 @@ class MainController extends Controller
 
         return view('pages.task-index', compact('tasks'));
     }
+
     public function taskShow($id) {
         $task = Task::findOrFail($id);
 
@@ -56,8 +62,8 @@ class MainController extends Controller
          $task -> typologies() -> attach($typologies); //attach: aggiunge senza toglie
 
         return redirect() -> route('task-show', $task -> id);
- 
     }
+
     public function taskEdit($id) {
 
         $task = Task::findOrFail($id); //si recupera il task dalla tabella
@@ -74,15 +80,19 @@ class MainController extends Controller
         
         $employee = Employee::findOrFail($edit['employee_id']);
         $task = Task::findOrFail($id);
-        $task =  update($edit); //la funzione update aggiorna i dati ///////////////////////////////NON FUNZIONA
+        $task -> update($edit); //la funzione update aggiorna i dati
         $task -> employee() -> associate($employee);
         $task -> save();
 
         $typologies = Typology::findOrfail($edit['typologies']);
         $task -> typologies() -> sync($typologies); //sync: posso sia aggiungere che rimuovere
 
-        // return redirect() -> route('task-show', $task -> id);
+        return redirect() -> route('task-show', $task -> id);
     }
+    
+
+
+
 
     // TYPOLOGIES
     public function typologyIndex() {
