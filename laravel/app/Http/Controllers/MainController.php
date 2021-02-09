@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 use App\Task;
 use App\Typology;
@@ -75,6 +77,14 @@ class MainController extends Controller
     public function update(Request $request, $id) {
 
         $edit = $request -> all();
+
+        // validator
+        Validator::make($edit, [
+            'title' => 'required', //non opzionale
+            'description' => 'required',
+            'priority' => 'required',
+        ]) -> validate();
+
 
         // dd($edit);
         
